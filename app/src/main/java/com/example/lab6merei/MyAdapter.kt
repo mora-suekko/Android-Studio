@@ -1,4 +1,4 @@
-package com.example.lab6merei
+package com.example.lab06
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private val items: List<String>) :
+class MyAdapter(private val items: List<String>, private val onItemClick: (String) -> Unit) :
     RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -21,8 +21,10 @@ class MyAdapter(private val items: List<String>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textView.text = items[position]
+        holder.itemView.setOnClickListener {
+            onItemClick(items[position])
+        }
     }
 
     override fun getItemCount(): Int = items.size
-
 }
