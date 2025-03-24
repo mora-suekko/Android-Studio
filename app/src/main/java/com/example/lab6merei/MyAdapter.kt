@@ -23,5 +23,6 @@ class MyAdapter(private val items: List<String>) :
         holder.textView.text = items[position]
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount(): Int = items.size
+
 }
